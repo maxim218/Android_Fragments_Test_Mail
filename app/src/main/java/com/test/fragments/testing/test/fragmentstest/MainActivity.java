@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
             f2 = (FragmentSecond) getSupportFragmentManager().findFragmentById(R.id.frag_second);
 
             f1.hideIt();
+            f2.showIt();
 
             // передаём во второй фрагмент доступ к данной активности (чтобы было можно вызывать её методы)
             f2.initMainActivity(this);
@@ -65,6 +66,9 @@ public class MainActivity extends AppCompatActivity {
             // получаем доступ к фрагментам
             f1 = (FragmentFirst) getSupportFragmentManager().findFragmentById(R.id.frag_first);
             f2 = (FragmentSecond) getSupportFragmentManager().findFragmentById(R.id.frag_second);
+
+            f1.showIt();
+            f2.showIt();
 
             // передаём во второй фрагмент доступ к данной активности (чтобы было можно вызывать её методы)
             f2.initMainActivity(this);
@@ -99,8 +103,15 @@ public class MainActivity extends AppCompatActivity {
         f1.setFieldFirst(s);
         f1.setFieldSecond(s + "\n" + s + "\n" + s + "\n" + s + "\n" + s + "\n" + s + "\n" + s + "\n" + s + "\n" + s);
 
-        f1.showIt();
-        f2.hideIt();
+        if(getOrientationType() == 2) {
+            f1.showIt();
+            f2.showIt();
+        }
+
+        if(getOrientationType() == 1) {
+            f2.hideIt();
+            f1.showIt();
+        }
     }
 
     // метод для вывода текста в консоль для отладки
@@ -117,7 +128,14 @@ public class MainActivity extends AppCompatActivity {
 
     // принажатии на кнопку назад
     public void onBackPressed() {
-        f2.showIt();
-        f1.hideIt();
+        if(getOrientationType() == 2) {
+            f1.showIt();
+            f2.showIt();
+        }
+
+        if(getOrientationType() == 1) {
+            f1.hideIt();
+            f2.showIt();
+        }
     }
 }
