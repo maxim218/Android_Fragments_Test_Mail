@@ -39,4 +39,16 @@ public class FragmentFirst extends Fragment {
         TextView t2 = (TextView) getView().findViewById(R.id.textview_2);
         t2.setText(s);
     }
+
+    // получить значение первого поля
+    public String getFieldFirstValue() {
+        TextView t1 = (TextView) getView().findViewById(R.id.textview_1);
+        return t1.getText().toString();
+    }
+
+    // получить значение второго поля
+    public String getFieldsSecondValue() {
+        TextView t2 = (TextView) getView().findViewById(R.id.textview_2);
+        return  t2.getText().toString();
+    }
 }

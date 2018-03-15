@@ -12,6 +12,17 @@ public class MainActivity extends AppCompatActivity {
     public FragmentFirst f1;
     public FragmentSecond f2;
 
+    // перед поворотом окна
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+
+        // сохраняем значения текстовых полей
+        String v1 = f1.getFieldFirstValue();
+        String v2 = f1.getFieldsSecondValue();
+        savedInstanceState.putString("v1", v1);
+        savedInstanceState.putString("v2", v2);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +48,15 @@ public class MainActivity extends AppCompatActivity {
 
         // инициализируем список выбора значениями
         initPointsList();
+
+        // после поворота окна
+        if(savedInstanceState != null){
+            // получаем значения текстовых полей
+            String v1 = savedInstanceState.getString("v1");
+            String v2 = savedInstanceState.getString("v2");
+            f1.setFieldFirst(v1);
+            f1.setFieldSecond(v2);
+        }
     }
 
     // метод для инициализации списка выбора значениями
