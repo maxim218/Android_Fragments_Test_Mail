@@ -64,4 +64,14 @@ public class FragmentSecond extends Fragment {
         ListView listView_1 = (ListView) getView().findViewById(R.id.listview_1);
         listView_1.setAdapter(list_1_adapter);
     }
+
+    // спрятать фрагмент
+    public void hideIt() {
+        getView().setVisibility(View.INVISIBLE);
+    }
+
+    // показать фрагмент
+    public void showIt() {
+        getView().setVisibility(View.VISIBLE);
+    }
 }

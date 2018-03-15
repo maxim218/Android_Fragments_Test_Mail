@@ -51,4 +51,14 @@ public class FragmentFirst extends Fragment {
         TextView t2 = (TextView) getView().findViewById(R.id.textview_2);
         return  t2.getText().toString();
     }
+
+    // спрятать фрагмент
+    public void hideIt() {
+        getView().setVisibility(View.INVISIBLE);
+    }
+
+    // показать фрагмент
+    public void showIt() {
+        getView().setVisibility(View.VISIBLE);
+    }
 }

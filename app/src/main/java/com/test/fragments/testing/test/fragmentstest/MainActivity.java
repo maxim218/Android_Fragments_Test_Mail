@@ -4,6 +4,7 @@ import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 
 public class MainActivity extends AppCompatActivity {
@@ -33,29 +34,52 @@ public class MainActivity extends AppCompatActivity {
 
         if(type == 1) {
             LogInMyConsole("Vertical");
+
+            // получаем доступ к фрагментам
+            f1 = (FragmentFirst) getSupportFragmentManager().findFragmentById(R.id.frag_first);
+            f2 = (FragmentSecond) getSupportFragmentManager().findFragmentById(R.id.frag_second);
+
+            f1.hideIt();
+
+            // передаём во второй фрагмент доступ к данной активности (чтобы было можно вызывать её методы)
+            f2.initMainActivity(this);
+
+            // инициализируем список выбора значениями
+            initPointsList();
+
+            // после поворота окна
+            if (savedInstanceState != null) {
+                // получаем значения текстовых полей
+                String v1 = savedInstanceState.getString("v1");
+                String v2 = savedInstanceState.getString("v2");
+                f1.setFieldFirst(v1);
+                f1.setFieldSecond(v2);
+            }
         }
+
+
 
         if(type == 2) {
             LogInMyConsole("Horizontal");
-        }
 
-        // получаем доступ к фрагментам
-        f1 = (FragmentFirst) getSupportFragmentManager().findFragmentById(R.id.frag_first);
-        f2 = (FragmentSecond) getSupportFragmentManager().findFragmentById(R.id.frag_second);
+            // получаем доступ к фрагментам
+            f1 = (FragmentFirst) getSupportFragmentManager().findFragmentById(R.id.frag_first);
+            f2 = (FragmentSecond) getSupportFragmentManager().findFragmentById(R.id.frag_second);
 
-        // передаём во второй фрагмент доступ к данной активности (чтобы было можно вызывать её методы)
-        f2.initMainActivity(this);
+            // передаём во второй фрагмент доступ к данной активности (чтобы было можно вызывать её методы)
+            f2.initMainActivity(this);
 
-        // инициализируем список выбора значениями
-        initPointsList();
+            // инициализируем список выбора значениями
+            initPointsList();
 
-        // после поворота окна
-        if(savedInstanceState != null){
-            // получаем значения текстовых полей
-            String v1 = savedInstanceState.getString("v1");
-            String v2 = savedInstanceState.getString("v2");
-            f1.setFieldFirst(v1);
-            f1.setFieldSecond(v2);
+            // после поворота окна
+            if (savedInstanceState != null) {
+                // получаем значения текстовых полей
+                String v1 = savedInstanceState.getString("v1");
+                String v2 = savedInstanceState.getString("v2");
+                f1.setFieldFirst(v1);
+                f1.setFieldSecond(v2);
+            }
         }
     }
 
@@ -74,6 +98,9 @@ public class MainActivity extends AppCompatActivity {
         // вызываем методы фрагмента, которые инициализируют текстовые поля значениями
         f1.setFieldFirst(s);
         f1.setFieldSecond(s + "\n" + s + "\n" + s + "\n" + s + "\n" + s + "\n" + s + "\n" + s + "\n" + s + "\n" + s);
+
+        f1.showIt();
+        f2.hideIt();
     }
 
     // метод для вывода текста в консоль для отладки
@@ -86,5 +113,11 @@ public class MainActivity extends AppCompatActivity {
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) return 1;
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) return 2;
         return 0;
+    }
+
+    // принажатии на кнопку назад
+    public void onBackPressed() {
+        f2.showIt();
+        f1.hideIt();
     }
 }
