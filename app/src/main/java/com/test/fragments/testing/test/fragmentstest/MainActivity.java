@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     // метод для инициализации списка выбора значениями
     public void initPointsList() {
         // создаём массив строк для хранения значений
-        String arr [] = {"Пункт 1", "Пункт 2", "Пункт 3", "Пункт 4", "Пункт 5", "Пункт 6"};
+        String arr [] = {"Пункт 1", "Пункт 2", "Пункт 3"};
         // создаём адаптер, который позволяет инициализировать список выбора значениями из массива
         ArrayAdapter <String> list_1_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arr);
         // передаём адаптер фрагменту

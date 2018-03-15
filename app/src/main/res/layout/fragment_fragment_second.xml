@@ -1,13 +1,13 @@
 <AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="300dp"
-    android:layout_height="150dp"
+    android:layout_height="wrap_content"
     android:background="#CCCCCC"
     >
 
     <ListView
         android:id="@+id/listview_1"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_x="0dp"
         android:layout_y="0dp"
         />
