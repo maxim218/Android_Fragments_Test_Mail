@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">FragmentsTest</string>
+    <string name="app_name">Тестирование фрагментов</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="subj_name_str">Название предмета</string>
+    <string name="subj_list_content_str">Предмет 1\nПредмет 2\nПредмет 3\nПредмет 4</string>
+    <string name="frag_test_str">Тестирование фрагментов</string>
 </resources>
