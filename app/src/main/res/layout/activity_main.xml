@@ -17,12 +17,21 @@
             android:textColor="#000000"/>
 
         <fragment
-            class = "com.test.fragments.testing.test.fragmentstest.FragmentFirst"
-            android:id="@+id/frag_first"
+            class = "com.test.fragments.testing.test.fragmentstest.FragmentSecond"
+            android:id="@+id/frag_second"
             android:layout_width="300dp"
             android:layout_height="150dp"
             android:layout_x="0dp"
             android:layout_y="50dp"
+            />
+
+        <fragment
+            class = "com.test.fragments.testing.test.fragmentstest.FragmentFirst"
+            android:id="@+id/frag_first"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_x="0dp"
+            android:layout_y="220dp"
             />
 
     </AbsoluteLayout>
