@@ -47,7 +47,8 @@ public class FragmentSecond extends Fragment {
     public void addEventsToElements() {
         AdapterView.OnItemClickListener itemClickListener_1 = new AdapterView.OnItemClickListener(){
             public void onItemClick(AdapterView <?> listView, View v, int position, long id){
-
+                // выводим информацию о щелчке в консоль
+                mainActivity.LogInMyConsole("List element click");
                 // получаем текст внутри элемента, по которому был произведён щелчок
                 String s = ((TextView) v).getText().toString();
                 // вызываем метод активности, который меняет содержимое текстовых полей внутри другого фрагмента

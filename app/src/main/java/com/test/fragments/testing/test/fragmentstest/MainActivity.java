@@ -1,7 +1,9 @@
 package com.test.fragments.testing.test.fragmentstest;
 
+import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,6 +16,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // получаем тип ориентации экрана
+        int type = getOrientationType();
+
+        if(type == 1) {
+            LogInMyConsole("Vertical");
+        }
+
+        if(type == 2) {
+            LogInMyConsole("Horizontal");
+        }
 
         // получаем доступ к фрагментам
         f1 = (FragmentFirst) getSupportFragmentManager().findFragmentById(R.id.frag_first);
@@ -41,5 +54,17 @@ public class MainActivity extends AppCompatActivity {
         // вызываем методы фрагмента, которые инициализируют текстовые поля значениями
         f1.setFieldFirst(s);
         f1.setFieldSecond(s + "\n" + s + "\n" + s + "\n" + s + "\n" + s + "\n" + s + "\n" + s + "\n" + s + "\n" + s);
+    }
+
+    // метод для вывода текста в консоль для отладки
+    public void LogInMyConsole(String s) {
+        Log.i(" Message ", "         " + s);
+    }
+
+    // получить ориентацию экрана
+    public int getOrientationType() {
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) return 1;
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) return 2;
+        return 0;
     }
 }
